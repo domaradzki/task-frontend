@@ -41,6 +41,7 @@ function watch(){
         }
     });
     gulp.watch(paths.styles.src, style)
+    gulp.watch("src/css/*.css", reload);
     gulp.watch("src/*.html", reload); 
 }
 
