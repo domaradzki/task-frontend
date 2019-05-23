@@ -8,8 +8,8 @@ var browserSync = require("browser-sync").create();
 	
 var paths = {
     styles: {
-        src: "src/scss/*.scss",
-        dest: "src/css"
+        src: "zadanieHtml/scss/*.scss",
+        dest: "zadanieHtml/css"
     }
 
 };
@@ -37,12 +37,13 @@ function reload(done) {
 function watch(){
     browserSync.init({
         server: {
-            baseDir: "./src"
+            baseDir: "./"
         }
     });
     gulp.watch(paths.styles.src, style)
-    gulp.watch("src/css/*.css", reload);
-    gulp.watch("src/*.html", reload); 
+    gulp.watch("zadanieHtml/*.html", reload); 
+    gulp.watch("./style.css", reload); 
+    gulp.watch("./*.html", reload); 
 }
 
 exports.default = watch;
