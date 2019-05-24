@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: rgb(182, 182, 182);
+}
+.task__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task__container table {
+    border:1px solid rgb(0, 42, 70);
+}
