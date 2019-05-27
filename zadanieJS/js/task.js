@@ -39,10 +39,10 @@ const displayDatainTable = (data, type) => {
   });
   target.appendChild(rowNode);
 
-  if (type==="last48") {
-    const last48 = new Date();
-    last48.setHours(last48.getHours() - 48);
-    dataToSort = dataToSort.filter(post=>post.created>=last48);
+  if (type==="last24") {
+    const last24 = new Date();
+    last24.setHours(last24.getHours() - 24);
+    dataToSort = dataToSort.filter(post=>post.created>=last24);
   } else {
     dataToSort.sort((a, b) => a[type] - b[type]);
   }
