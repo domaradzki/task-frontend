@@ -20,6 +20,7 @@ const getDataPromise = () =>
           }
         };
         displayDatainTable(data);
+        countBestVotes();
       },
       error => console.log(error)
     );
@@ -27,7 +28,7 @@ const getDataPromise = () =>
 getDataPromise();
 
 const displayDatainTable = (data, type) => {
-  const dataToSort = data.posts.slice();
+  let dataToSort = data.posts.slice();
   const rowNode = createNode("row");
   ["Title", "Upvotes", "Score", "Comments", "Created"].forEach(element => {
     const cellNode = createNode("cell");
@@ -38,8 +39,10 @@ const displayDatainTable = (data, type) => {
   });
   target.appendChild(rowNode);
 
-  if (type==="cr") {
-    dataToSort.sort((a, b) => (new Date(a[type])) > (new Date(b[type])));
+  if (type==="last48") {
+    const last48 = new Date();
+    last48.setHours(last48.getHours() - 48);
+    dataToSort = dataToSort.filter(post=>post.created>=last48);
   } else {
     dataToSort.sort((a, b) => a[type] - b[type]);
   }
@@ -89,4 +92,16 @@ const clickedFilter = () => {
   target.innerHTML = '';
   const type = event.target.name;
   displayDatainTable(data, type);
+}
+
+const countBestVotes = () => {
+  const bestVotes = document.querySelector(".bestvote");
+  const voteToCommentArray = data.posts.map(post=>({
+    title:post.title,
+    votesToComment: post.num_comments/post.upvotes
+  }));
+  const biggestVotes = voteToCommentArray.map(post=>post.votesToComment);
+  const bigestVotesToComment = Math.max(...biggestVotes);
+  const voteToComment = voteToCommentArray.find(post=>post.votesToComment===bigestVotesToComment);
+  bestVotes.innerHTML = voteToComment.title;
 }

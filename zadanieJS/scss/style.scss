@@ -54,3 +54,11 @@ body {
   margin-right: 15px;
   border-radius: 5px;
 }
+.votes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 10px;
+}
