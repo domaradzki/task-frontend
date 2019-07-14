@@ -1,7 +1,7 @@
 ## Zadanie HTML
 Zadanie wykonane z wykorzystaniem flexboxa, style napisane w technologi Sass i dzięki task runnerowi Gulp utworzone pliki CSS.
 
-##Zadanie JS
+## Zadanie JS
 Zadanie wykonane w Vanilla JS
 
 Filtry do sortowania umieszczone w przyciskach.
